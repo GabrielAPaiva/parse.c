@@ -4,30 +4,36 @@
 
 int main(int argc, char const *arg[]){
     FILE *pa;
-    int x,y;
+    int op,x,y;
     char aux[25];
-    x = atoi(arg[2]);
-    y = atoi(arg[3]);
-    //printf("%i+%i=%i\n", x,y,x+y);
 
     void salvar(){
-        if(pa = fopen("cript.txt","rb+") == NULL){
-        pa = fopen("cript.txt","wb+");}
-        rewind(pa);
-        for(int i=4; i<4+x; i++){
+      x = atoi(arg[2]);
+      y = atoi(arg[3]);
+      if(pa = fopen("cript.txt","rb+") == NULL){
+      pa = fopen("cript.txt","wb+");}
+      rewind(pa);
+      for(int i=4; i<4+x; i++){
             strcpy(aux,arg[i]);
-            
-            fwrite(&aux,sizeof(arg)*1,1,pa);
+            fwrite(&aux,sizeof(char)*30,1,pa);
         }
-        fclose(pa);
     }
-
-    if(strcmp(arg[1],"salvar")==0)
-    salvar();
-    //void abrir(){
-    //    pa = fopen("cript.txt","rb+");
-    //    fread(sizeof(char),100,pa);
-    //    system("pause");
-    //}
+    void me(){
+      printf("========================================================");
+      printf("\n   .-------.                  \n   \\\\   ___ \\\\               *\\\\\\*\n    \\\\  \\  \\ \\\\              \\\\   \\\\\n     \\\\  ---  \\\\              \\\\\n      \\\\- ====_____   _____     *    _____     _____\n       \\\\     \\\\ __\\\\ \\\\   \\\\     \\\\ \\\\     *  \\\\\n        \\\\     \\\\   \\\\ \\\\__'- \\\\   \\\\ \\\\---     \\\\\n         \\\\     \\\\   \\\\ \\\\ \\\\   \\\\*\\\\  \\\\___     \\\\___\n");
+      printf("========================================================\n");
+      printf("\nSalvar:\n\t*[parse salvar  i j valores]\n\tonde i = número de elementos,\n\tj = número letras em cada elemento.\n");
+    }
+    strcpy(aux,arg[1]);
+    if(strcmp(aux,"salvar")==0){op=1;}
+    if (strcmp(aux,"help")==0){op=2;}
+    switch (op) {
+      case 1:
+      salvar();
+      break;
+      case 2:
+      me();
+      break;
+    }
     return 0;
 }
